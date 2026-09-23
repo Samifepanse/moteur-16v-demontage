@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Démontage moteur 16 soupapes</title>
+  <meta name="description" content="Guide atelier illustré pour le démontage d’un moteur essence 16 soupapes.">
+  <meta name="theme-color" content="#101820">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23101820'/%3E%3Cpath d='M18 21h28v22H18zM13 27h5m28 0h5M13 37h5m28 0h5M25 16v5m14-5v5M25 43v5m14-5v5' fill='none' stroke='%23ffb000' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="engine-icon" aria-hidden="true">16V</span>
+      <div><strong>Démontage moteur</strong><span>Guide atelier</span></div>
+    </div>
+    <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="stepNav">Étapes</button>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="stepNav">
+      <div class="progress-label"><span>Progression</span><strong id="progressText">0 / 29</strong></div>
+      <div class="progress-track"><span id="progressBar"></span></div>
+      <nav id="navList" aria-label="Étapes de démontage"></nav>
+    </aside>
+
+    <main>
+      <section class="intro" aria-labelledby="pageTitle">
+        <p class="eyebrow">Moteur essence 16 soupapes</p>
+        <h1 id="pageTitle">Démonter proprement<br>sans perdre le fil</h1>
+        <p>Une action par étape. Les photos montrent où intervenir. Les vis restent avec leur pièce.</p>
+        <a class="start-button" href="#step-1">Commencer <span>↓</span></a>
+      </section>
+
+      <section class="safety" aria-labelledby="safetyTitle">
+        <div><span class="section-number">00</span><h2 id="safetyTitle">Avant de commencer</h2></div>
+        <ul>
+          <li>EPI et moteur solidement fixé</li>
+          <li>Fluides vidangés</li>
+          <li>Photo avant chaque débranchement</li>
+          <li>Vis replacées sur la pièce</li>
+          <li>Conduits ouverts immédiatement bouchés</li>
+          <li>Couples et calage dans la documentation constructeur</li>
+        </ul>
+      </section>
+
+      <div id="steps"></div>
+      <footer>Guide atelier illustré · Lycée professionnel</footer>
+    </main>
+  </div>
+
+  <dialog id="lightbox" aria-label="Photo agrandie">
+    <button id="closeLightbox" aria-label="Fermer">×</button>
+    <img id="lightboxImage" alt="">
+    <p id="lightboxCaption"></p>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

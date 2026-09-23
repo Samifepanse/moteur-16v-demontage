@@ -1,0 +1,21 @@
+SITE DEMONTAGE MOTEUR 16 SOUPAPES
+
+Ce dossier est prêt pour GitHub Pages.
+
+Fichiers à déposer à la racine du dépôt GitHub :
+- index.html
+- styles.css
+- app.js
+- dossier assets
+
+Ne placez pas le dossier parent export_github_pages dans le dépôt :
+déposez directement son contenu.
+
+Après l'envoi des fichiers :
+1. Ouvrir Settings dans le dépôt GitHub.
+2. Ouvrir Pages.
+3. Dans Build and deployment, choisir Deploy from a branch.
+4. Choisir la branche main et le dossier /(root).
+5. Cliquer sur Save.
+
+GitHub affichera ensuite l'adresse publique du site.
