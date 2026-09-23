@@ -37,7 +37,7 @@ steps.forEach((step,index)=>{
   const n=index+1;
   const article=document.createElement('article');
   article.className='step';article.id=`step-${n}`;article.dataset.step=n;
-  const photos=step[2].map((src,j)=>`<button class="photo-button" data-src="assets/${src}" data-caption="Étape ${pad(n)} · Photo ${j+1}"><img src="assets/${src}" alt="${step[0]} · vue ${j+1}" loading="lazy"><span>Photo ${j+1}</span></button>`).join('');
+  const photos=step[2].map((src,j)=>`<button class="photo-button" data-src="assets/${src}?v=20260923-photos2" data-caption="Étape ${pad(n)} · Photo ${j+1}"><img src="assets/${src}?v=20260923-photos2" alt="${step[0]} · vue ${j+1}" loading="lazy"><span>Photo ${j+1}</span></button>`).join('');
   article.innerHTML=`<div class="step-head"><span class="step-number">${pad(n)}</span><h2>${step[0]}</h2><p class="action">${step[1]}</p></div><div class="photos ${step[2].length===1?'one':''}">${photos}</div><p class="warning"><strong>Vigilance</strong>${step[3]}</p>`;
   stepsRoot.append(article);
   nav.insertAdjacentHTML('beforeend',`<a href="#step-${n}" data-step="${n}"><b>${pad(n)}</b><span>${step[0]}</span></a>`);
