@@ -33,14 +33,21 @@ const steps=[
 const stepsRoot=document.querySelector('#steps');
 const nav=document.querySelector('#navList');
 const pad=n=>String(n).padStart(2,'0');
+const photoRotations={'step_24_0.jpg':90,'step_26_2.jpg':90,'step_29_0.jpg':-90};
 steps.forEach((step,index)=>{
   const n=index+1;
   const article=document.createElement('article');
   article.className='step';article.id=`step-${n}`;article.dataset.step=n;
-  const photos=step[2].map((src,j)=>`<button class="photo-button" data-src="assets/${src}?v=20260923-photos2" data-caption="Étape ${pad(n)} · Photo ${j+1}"><img src="assets/${src}?v=20260923-photos2" alt="${step[0]} · vue ${j+1}" loading="lazy"><span>Photo ${j+1}</span></button>`).join('');
+  const photos=step[2].map((src,j)=>`<button class="photo-button" data-src="assets/${src}?v=20260923-photos2" data-caption="Étape ${pad(n)} · Photo ${j+1}"><img src="assets/${src}?v=20260923-originals" data-rotate="${photoRotations[src]||0}" alt="${step[0]} · vue ${j+1}" loading="lazy"><span>Photo ${j+1}</span></button>`).join('');
   article.innerHTML=`<div class="step-head"><span class="step-number">${pad(n)}</span><h2>${step[0]}</h2><p class="action">${step[1]}</p></div><div class="photos ${step[2].length===1?'one':''}">${photos}</div><p class="warning"><strong>Vigilance</strong>${step[3]}</p>`;
   stepsRoot.append(article);
   nav.insertAdjacentHTML('beforeend',`<a href="#step-${n}" data-step="${n}"><b>${pad(n)}</b><span>${step[0]}</span></a>`);
+});
+
+document.querySelectorAll('img[data-rotate]').forEach(img=>{
+  const angle=Number(img.dataset.rotate);if(!angle)return;
+  const rotatePhoto=()=>{const w=img.naturalWidth,h=img.naturalHeight,canvas=document.createElement('canvas');canvas.width=h;canvas.height=w;const ctx=canvas.getContext('2d');ctx.translate(h/2,w/2);ctx.rotate(angle*Math.PI/180);ctx.drawImage(img,-w/2,-h/2);const rotated=canvas.toDataURL('image/jpeg',.95);img.src=rotated;img.closest('.photo-button').dataset.src=rotated;};
+  if(img.complete)rotatePhoto();else img.addEventListener('load',rotatePhoto,{once:true});
 });
 
 const links=[...nav.querySelectorAll('a')],progressText=document.querySelector('#progressText'),progressBar=document.querySelector('#progressBar');
